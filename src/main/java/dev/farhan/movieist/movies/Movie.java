@@ -26,7 +26,7 @@ public class Movie {
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    public Movie(String title, String director, int releaseYear, String trailerLink, List<String> genre, List<String> notableCast, LocalDateTime created, LocalDateTime updated) {
+    public Movie(String title, int tt, String director, int releaseYear, String trailerLink, List<String> genre, List<String> notableCast, LocalDateTime created, LocalDateTime updated) {
         this.title = title;
         this.director = director;
         this.releaseYear = releaseYear;
