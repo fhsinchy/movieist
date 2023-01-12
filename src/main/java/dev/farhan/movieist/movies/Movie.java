@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Document(collection = "movies")
@@ -17,23 +17,23 @@ import java.util.List;
 public class Movie {
     @Id
     private ObjectId id;
+    private String imdbId;
     private String title;
-    private String director;
-    private int releaseYear;
+    private String releaseDate;
     private String trailerLink;
-    private List<String> genre;
-    private List<String> notableCast;
-    private LocalDateTime created;
-    private LocalDateTime updated;
+    private String poster;
+    private List<String> backdrops;
+    private List<String> genres;
+    @DocumentReference
+    private List<Review> reviews;
 
-    public Movie(String title, int tt, String director, int releaseYear, String trailerLink, List<String> genre, List<String> notableCast, LocalDateTime created, LocalDateTime updated) {
+    public Movie(String imdbId, String title, String releaseDate, String trailerLink, String poster, List<String> backdrops, List<String> genres) {
+        this.imdbId = imdbId;
         this.title = title;
-        this.director = director;
-        this.releaseYear = releaseYear;
+        this.releaseDate = releaseDate;
         this.trailerLink = trailerLink;
-        this.genre = genre;
-        this.notableCast = notableCast;
-        this.created = created;
-        this.updated = updated;
+        this.poster = poster;
+        this.backdrops = backdrops;
+        this.genres = genres;
     }
 }
